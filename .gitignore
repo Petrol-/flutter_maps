@@ -69,5 +69,6 @@
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 .vs/slnx.sqlite
-.vs/flutter_starter/v16/.suo
+.vs/flutter_maps/v16/.suo
 .vs/VSWorkspaceState.json
+.vs/flutter_starter/v16/.suo

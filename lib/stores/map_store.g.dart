@@ -26,6 +26,40 @@ mixin _$MapStore on _MapStore, Store {
     }, _$valueAtom, name: '${_$valueAtom.name}_set');
   }
 
+  final _$googleHQAtom = Atom(name: '_MapStore.googleHQ');
+
+  @override
+  CameraPosition get googleHQ {
+    _$googleHQAtom.context.enforceReadPolicy(_$googleHQAtom);
+    _$googleHQAtom.reportObserved();
+    return super.googleHQ;
+  }
+
+  @override
+  set googleHQ(CameraPosition value) {
+    _$googleHQAtom.context.conditionallyRunInAction(() {
+      super.googleHQ = value;
+      _$googleHQAtom.reportChanged();
+    }, _$googleHQAtom, name: '${_$googleHQAtom.name}_set');
+  }
+
+  final _$mapControllerAtom = Atom(name: '_MapStore.mapController');
+
+  @override
+  GoogleMapController get mapController {
+    _$mapControllerAtom.context.enforceReadPolicy(_$mapControllerAtom);
+    _$mapControllerAtom.reportObserved();
+    return super.mapController;
+  }
+
+  @override
+  set mapController(GoogleMapController value) {
+    _$mapControllerAtom.context.conditionallyRunInAction(() {
+      super.mapController = value;
+      _$mapControllerAtom.reportChanged();
+    }, _$mapControllerAtom, name: '${_$mapControllerAtom.name}_set');
+  }
+
   final _$_MapStoreActionController = ActionController(name: '_MapStore');
 
   @override

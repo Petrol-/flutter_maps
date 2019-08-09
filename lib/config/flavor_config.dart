@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter/config/flavor.dart';
-import 'package:flutter_starter/config/flavor_values.dart';
-import 'package:flutter_starter/utils/string_utils.dart';
+import 'package:flutter_maps/utils/string_utils.dart';
+
+import 'flavor.dart';
+import 'flavor_values.dart';
+
 
 class FlavorConfig {
   static FlavorConfig _instance;

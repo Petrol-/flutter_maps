@@ -1,4 +1,4 @@
-package com.example.flutter_starter;
+package com.example.flutter_maps;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
