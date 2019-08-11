@@ -9,38 +9,40 @@ part of 'map_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars
 
 mixin _$MapStore on _MapStore, Store {
-  final _$valueAtom = Atom(name: '_MapStore.value');
+  final _$parisCameraPositionAtom = Atom(name: '_MapStore.parisCameraPosition');
 
   @override
-  int get value {
-    _$valueAtom.context.enforceReadPolicy(_$valueAtom);
-    _$valueAtom.reportObserved();
-    return super.value;
+  CameraPosition get parisCameraPosition {
+    _$parisCameraPositionAtom.context
+        .enforceReadPolicy(_$parisCameraPositionAtom);
+    _$parisCameraPositionAtom.reportObserved();
+    return super.parisCameraPosition;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.context.conditionallyRunInAction(() {
-      super.value = value;
-      _$valueAtom.reportChanged();
-    }, _$valueAtom, name: '${_$valueAtom.name}_set');
+  set parisCameraPosition(CameraPosition value) {
+    _$parisCameraPositionAtom.context.conditionallyRunInAction(() {
+      super.parisCameraPosition = value;
+      _$parisCameraPositionAtom.reportChanged();
+    }, _$parisCameraPositionAtom,
+        name: '${_$parisCameraPositionAtom.name}_set');
   }
 
-  final _$googleHQAtom = Atom(name: '_MapStore.googleHQ');
+  final _$markersAtom = Atom(name: '_MapStore.markers');
 
   @override
-  CameraPosition get googleHQ {
-    _$googleHQAtom.context.enforceReadPolicy(_$googleHQAtom);
-    _$googleHQAtom.reportObserved();
-    return super.googleHQ;
+  ObservableList<Marker> get markers {
+    _$markersAtom.context.enforceReadPolicy(_$markersAtom);
+    _$markersAtom.reportObserved();
+    return super.markers;
   }
 
   @override
-  set googleHQ(CameraPosition value) {
-    _$googleHQAtom.context.conditionallyRunInAction(() {
-      super.googleHQ = value;
-      _$googleHQAtom.reportChanged();
-    }, _$googleHQAtom, name: '${_$googleHQAtom.name}_set');
+  set markers(ObservableList<Marker> value) {
+    _$markersAtom.context.conditionallyRunInAction(() {
+      super.markers = value;
+      _$markersAtom.reportChanged();
+    }, _$markersAtom, name: '${_$markersAtom.name}_set');
   }
 
   final _$mapControllerAtom = Atom(name: '_MapStore.mapController');
@@ -63,10 +65,10 @@ mixin _$MapStore on _MapStore, Store {
   final _$_MapStoreActionController = ActionController(name: '_MapStore');
 
   @override
-  void increment(int incrementValue) {
+  void addMarker(LatLng position) {
     final _$actionInfo = _$_MapStoreActionController.startAction();
     try {
-      return super.increment(incrementValue);
+      return super.addMarker(position);
     } finally {
       _$_MapStoreActionController.endAction(_$actionInfo);
     }

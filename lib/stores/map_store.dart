@@ -5,24 +5,40 @@ part 'map_store.g.dart';
 
 class MapStore = _MapStore with _$MapStore;
 
-
 abstract class _MapStore with Store {
-  _MapStore(){
+  _MapStore() {
     print("init");
   }
-  @observable
-  int value = 0;
 
-@observable
- CameraPosition googleHQ = CameraPosition(
-    target: LatLng(45.521563, -122.677433),
+  double get lightBlueHue => 204;
+
+  @observable
+  CameraPosition parisCameraPosition = CameraPosition(
+    target: LatLng(48.864716, 2.349014),
     zoom: 11.4746,
   );
 
-  @observable GoogleMapController mapController;
-  
+  @observable
+  ObservableList<Marker> markers = ObservableList<Marker>();
+
+  @observable
+  GoogleMapController mapController;
+
   @action
-  void increment(int incrementValue) {
-    value += incrementValue;
+  void addMarker(LatLng position) {
+    final marker = _createMarker(position);
+    markers.add(marker);
   }
+
+  Marker _createMarker(LatLng position) {
+    return Marker(
+      markerId: MarkerId(position.toString()),
+      position: position,
+      icon: BitmapDescriptor.defaultMarkerWithHue(lightBlueHue),
+      infoWindow: InfoWindow(
+          title: "Coordinates",
+          snippet: '${position.latitude} ${position.longitude}'),
+    );
+  }
+
 }
