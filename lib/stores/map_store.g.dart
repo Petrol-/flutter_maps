@@ -62,15 +62,10 @@ mixin _$MapStore on _MapStore, Store {
     }, _$mapControllerAtom, name: '${_$mapControllerAtom.name}_set');
   }
 
-  final _$_MapStoreActionController = ActionController(name: '_MapStore');
+  final _$addMarkerAsyncAction = AsyncAction('addMarker');
 
   @override
-  void addMarker(LatLng position) {
-    final _$actionInfo = _$_MapStoreActionController.startAction();
-    try {
-      return super.addMarker(position);
-    } finally {
-      _$_MapStoreActionController.endAction(_$actionInfo);
-    }
+  Future<dynamic> addMarker(LatLng position) {
+    return _$addMarkerAsyncAction.run(() => super.addMarker(position));
   }
 }

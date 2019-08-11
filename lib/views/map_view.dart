@@ -21,7 +21,8 @@ class MapView extends StatelessWidget {
                     mapStore.mapController = controller;
                   },
                   markers: Set<Marker>.from(mapStore.markers),
-                  onLongPress: (LatLng position) => mapStore.addMarker(position),
+                  onLongPress: (LatLng position) async =>
+                      await mapStore.addMarker(position),
                 ),
               ),
               floatingActionButton: FloatingActionButton(

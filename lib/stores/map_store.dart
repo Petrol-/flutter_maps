@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobx/mobx.dart';
 
@@ -6,8 +9,11 @@ part 'map_store.g.dart';
 class MapStore = _MapStore with _$MapStore;
 
 abstract class _MapStore with Store {
+  Completer<BitmapDescriptor> _lightningMarker = Completer();
   _MapStore() {
-    print("init");
+    BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(100, 100)),
+            "lib/assets/markers/marker.PNG")
+        .then((BitmapDescriptor desc) => _lightningMarker.complete(desc));
   }
 
   double get lightBlueHue => 204;
@@ -25,20 +31,27 @@ abstract class _MapStore with Store {
   GoogleMapController mapController;
 
   @action
-  void addMarker(LatLng position) {
-    final marker = _createMarker(position);
+  Future addMarker(LatLng position) async {
+    final marker = await _createMarker(position);
     markers.add(marker);
   }
 
-  Marker _createMarker(LatLng position) {
+  @action
+  void removeMarker(MarkerId markerId) {
+    markers.removeWhere((marker)=>marker.markerId == markerId);
+  }
+
+  Future<Marker> _createMarker(LatLng position) async {
+    final id = MarkerId(position.toString());
     return Marker(
-      markerId: MarkerId(position.toString()),
+      markerId: id ,
       position: position,
-      icon: BitmapDescriptor.defaultMarkerWithHue(lightBlueHue),
+      consumeTapEvents: true,
+      icon: await _lightningMarker.future,
+      onTap: () => removeMarker(id),
       infoWindow: InfoWindow(
           title: "Coordinates",
           snippet: '${position.latitude} ${position.longitude}'),
     );
   }
-
 }
