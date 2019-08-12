@@ -12,7 +12,7 @@ abstract class _MapStore with Store {
   Completer<BitmapDescriptor> _lightningMarker = Completer();
   _MapStore() {
     BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(100, 100)),
-            "lib/assets/markers/marker.PNG")
+            "lib/assets/markers/marker_blue.PNG")
         .then((BitmapDescriptor desc) => _lightningMarker.complete(desc));
   }
 
