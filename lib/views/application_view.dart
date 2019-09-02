@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/stores/application_store.dart';
+import 'package:flutter_maps/views/map/map_view.dart';
 import 'package:provider/provider.dart';
 
-import 'map_view.dart';
 
 class ApplicationView extends StatelessWidget {
   @override

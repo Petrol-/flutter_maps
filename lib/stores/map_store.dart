@@ -9,11 +9,12 @@ part 'map_store.g.dart';
 class MapStore = _MapStore with _$MapStore;
 
 abstract class _MapStore with Store {
-  Completer<BitmapDescriptor> _lightningMarker = Completer();
+  Completer<BitmapDescriptor> _blueMarker = Completer();
+  
   _MapStore() {
     BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(100, 100)),
             "lib/assets/markers/marker_blue.PNG")
-        .then((BitmapDescriptor desc) => _lightningMarker.complete(desc));
+        .then((BitmapDescriptor desc) => _blueMarker.complete(desc));
   }
 
   double get lightBlueHue => 204;
@@ -38,16 +39,24 @@ abstract class _MapStore with Store {
 
   @action
   void removeMarker(MarkerId markerId) {
-    markers.removeWhere((marker)=>marker.markerId == markerId);
+    markers.removeWhere((marker) => marker.markerId == markerId);
   }
 
   Future<Marker> _createMarker(LatLng position) async {
-    final id = MarkerId(position.toString());
+    return _createBlueMarker(position);
+  }
+
+  MarkerId _createMarkerId(LatLng position) {
+    return new MarkerId(position.toString());
+  }
+
+  Future<Marker> _createBlueMarker(LatLng position) async {
+    final id = _createMarkerId(position);
     return Marker(
-      markerId: id ,
+      markerId: id,
       position: position,
       consumeTapEvents: true,
-      icon: await _lightningMarker.future,
+      icon: await _blueMarker.future,
       onTap: () => removeMarker(id),
       infoWindow: InfoWindow(
           title: "Coordinates",
