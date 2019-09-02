@@ -9,6 +9,7 @@ class MapTopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final  theme = Theme.of(context);
     return Container(
       height: 40,
       child: Row(
@@ -29,8 +30,8 @@ class MapTopBar extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: RoundIconButton(
                 icon: Icons.near_me,
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.lightBlue,
+                backgroundColor: theme.backgroundColor,
+                foregroundColor: theme.primaryColor,
                 onPressed: () {},
               ),
             ),

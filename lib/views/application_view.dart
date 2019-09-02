@@ -4,7 +4,6 @@ import 'package:flutter_maps/stores/application_store.dart';
 import 'package:flutter_maps/views/map/map_view.dart';
 import 'package:provider/provider.dart';
 
-
 class ApplicationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,6 +20,7 @@ class ApplicationView extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
           primarySwatch: Colors.blue,
+          backgroundColor: Colors.white,
         ),
         builder: (context, child) {
           return Scaffold(

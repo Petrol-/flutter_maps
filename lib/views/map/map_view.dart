@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_maps/core/widgets/drawer_item.dart';
+import 'package:flutter_maps/core/widgets/drawer_section.dart';
 import 'package:flutter_maps/stores/map_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -15,6 +17,18 @@ class MapView extends StatelessWidget {
         builder: (context) {
           final mapStore = Provider.of<MapStore>(context);
           return Scaffold(
+            appBar: AppBar(),
+            drawer: Drawer(
+              child: SafeArea(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: <Widget>[
+                    DrawerSection(icon: Icons.access_alarm, title: "Menu"),
+                    DrawerItem(icon: Icons.map, title: "CARTE GEOLOCALISEE", onTap: () {},)
+                  ],
+                ),
+              ),
+            ),
             body: Stack(
               children: [
                 Observer(
