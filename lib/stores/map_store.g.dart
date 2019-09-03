@@ -68,4 +68,16 @@ mixin _$MapStore on _MapStore, Store {
   Future<dynamic> addMarker(LatLng position) {
     return _$addMarkerAsyncAction.run(() => super.addMarker(position));
   }
+
+  final _$_MapStoreActionController = ActionController(name: '_MapStore');
+
+  @override
+  void removeMarker(MarkerId markerId) {
+    final _$actionInfo = _$_MapStoreActionController.startAction();
+    try {
+      return super.removeMarker(markerId);
+    } finally {
+      _$_MapStoreActionController.endAction(_$actionInfo);
+    }
+  }
 }
