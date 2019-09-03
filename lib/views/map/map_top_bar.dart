@@ -17,11 +17,11 @@ class MapTopBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Expanded(
-            flex: 6,
+            flex: 7,
             child: RoundSearchBar(),
           ),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Container(),
           ),
           Expanded(

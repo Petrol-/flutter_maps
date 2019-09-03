@@ -20,7 +20,7 @@ class RoundIconButton extends StatelessWidget {
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
       elevation: 0,
-      shape: CircleBorder(side: BorderSide(color: foregroundColor)),
+      shape: CircleBorder(side: BorderSide(color: foregroundColor, width: 2)),
       child: Icon(
         icon,
       ),

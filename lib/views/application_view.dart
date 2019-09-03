@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_maps/stores/application_store.dart';
 import 'package:flutter_maps/views/map/map_view.dart';
-import 'package:provider/provider.dart';
 
 class ApplicationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appStore = Provider.of<ApplicationStore>(context);
     return MaterialApp(
         theme: ThemeData(
           // This is the theme of your application.
@@ -22,26 +19,13 @@ class ApplicationView extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Colors.white,
         ),
-        builder: (context, child) {
-          return Scaffold(
-            // appBar: AppBar(
-            //   title: Observer(
-            //     builder: (_) => Text("${appStore.title}")),
-            //),
-            body: child,
-          );
-        },
-        home: MapView()
-        // onGenerateRoute: _routes,
+        initialRoute: "home",
+        onGenerateRoute: _routes,
+        home: MapView());
 
-        );
   }
 
-  Route _routes(RouteSettings settings) {
-    if (settings.isInitialRoute) {
-      return MaterialPageRoute(builder: (context) {
-        return MapView();
-      });
-    }
+  Route<dynamic> _routes(RouteSettings settings) {
+    return MaterialPageRoute(builder: (_) => MapView());
   }
 }
