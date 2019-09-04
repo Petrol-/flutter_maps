@@ -10,7 +10,7 @@ class MapStore = _MapStore with _$MapStore;
 
 abstract class _MapStore with Store {
   Completer<BitmapDescriptor> _blueMarker = Completer();
-  
+
   _MapStore() {
     BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(100, 100)),
             "lib/assets/markers/marker_blue.PNG")
@@ -40,6 +40,12 @@ abstract class _MapStore with Store {
   @action
   void removeMarker(MarkerId markerId) {
     markers.removeWhere((marker) => marker.markerId == markerId);
+  }
+
+  @action
+  Future<void> resetCameraPosition() {
+    return mapController
+        .animateCamera(CameraUpdate.newCameraPosition(parisCameraPosition));
   }
 
   Future<Marker> _createMarker(LatLng position) async {

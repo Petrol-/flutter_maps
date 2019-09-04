@@ -36,6 +36,8 @@ class AppMainDrawer extends StatelessWidget {
                 onTap: () {},
               ),
               DrawerItem(
+                name: Routes.newContract ,
+                selectedRoute: currentRouteName,
                 icon: Icons.add_circle_outline,
                 title: "NOUVEAU CONTRAT",
                 onTap: () => navigationService.navigateTo(Routes.newContract),

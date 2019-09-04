@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/core/widgets/round_icon_button.dart';
 import 'package:flutter_maps/core/widgets/round_searchbar.dart';
+import 'package:flutter_maps/features/map/stores/map_store.dart';
+import 'package:provider/provider.dart';
 
 class MapTopBar extends StatelessWidget {
   const MapTopBar({
@@ -10,6 +12,8 @@ class MapTopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final mapStore = Provider.of<MapStore>(context);
+
     return SafeArea(
       child: AppBar( 
         elevation: 0,
@@ -38,7 +42,7 @@ class MapTopBar extends StatelessWidget {
                     icon: Icons.near_me,
                     backgroundColor: theme.backgroundColor,
                     foregroundColor: theme.primaryColor,
-                    onPressed: () {},
+                    onPressed: () =>mapStore.resetCameraPosition(),
                   ),
                 ),
               ),

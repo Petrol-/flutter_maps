@@ -80,4 +80,14 @@ mixin _$MapStore on _MapStore, Store {
       _$_MapStoreActionController.endAction(_$actionInfo);
     }
   }
+
+  @override
+  Future<void> resetCameraPosition() {
+    final _$actionInfo = _$_MapStoreActionController.startAction();
+    try {
+      return super.resetCameraPosition();
+    } finally {
+      _$_MapStoreActionController.endAction(_$actionInfo);
+    }
+  }
 }
