@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 
 class DrawerItem extends StatelessWidget {
+  final String name;
   final String title;
   final IconData icon;
   final VoidCallback onTap;
   final String prefixLabel;
-  final bool selected;
+  final String selectedRoute;
   const DrawerItem(
       {Key key,
+      this.name,
       this.title = "",
       this.icon,
       this.prefixLabel,
-      this.selected = false,
+      this.selectedRoute,
       @required this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return ListTile(
-      selected: selected,
+      selected: _isSelected(),
       title: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -31,8 +32,15 @@ class DrawerItem extends StatelessWidget {
           ],
         ),
       ),
-      onTap: onTap,
+      onTap: () {
+        if (_isSelected()) return;
+        onTap();
+      },
     );
+  }
+
+  bool _isSelected() {
+    return selectedRoute != null && selectedRoute == name;
   }
 
   Widget _buildLeadingWidget(

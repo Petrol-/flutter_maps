@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_maps/views/map/map_view.dart';
+import 'package:flutter_maps/core/services/navigation_service.dart';
+import 'package:flutter_maps/router.dart';
+import 'package:flutter_maps/views/map/map_page.dart';
+import 'package:provider/provider.dart';
 
 class ApplicationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final navigationService = Provider.of<NavigationService>(context);
+    
     return MaterialApp(
         theme: ThemeData(
           // This is the theme of your application.
@@ -19,13 +25,9 @@ class ApplicationView extends StatelessWidget {
           primarySwatch: Colors.blue,
           backgroundColor: Colors.white,
         ),
+        navigatorKey: navigationService.navigatorKey,
         initialRoute: "home",
-        onGenerateRoute: _routes,
-        home: MapView());
-
-  }
-
-  Route<dynamic> _routes(RouteSettings settings) {
-    return MaterialPageRoute(builder: (_) => MapView());
+        onGenerateRoute: Router.generateRoutes,
+        home: MapPage());
   }
 }

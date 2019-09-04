@@ -11,7 +11,7 @@ class MapTopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SafeArea(
-      child: AppBar(
+      child: AppBar( 
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,

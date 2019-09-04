@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_maps/routes.dart';
 import 'package:flutter_maps/stores/application_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -7,9 +8,8 @@ import 'drawer_item.dart';
 import 'drawer_section.dart';
 
 class AppMainDrawer extends StatelessWidget {
-  const AppMainDrawer({
-    Key key,
-  }) : super(key: key);
+  final String currentRouteName;
+  const AppMainDrawer({Key key, this.currentRouteName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,8 @@ class AppMainDrawer extends StatelessWidget {
             children: <Widget>[
               DrawerSection(title: "Menu"),
               DrawerItem(
+                name: Routes.home,
+                selectedRoute: currentRouteName,
                 icon: Icons.map,
                 title: "CARTE GEOLOCALISEE",
                 onTap: () {},

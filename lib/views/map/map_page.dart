@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/core/widgets/AppMainDrawer.dart';
+import 'package:flutter_maps/routes.dart';
 import 'package:flutter_maps/stores/application_store.dart';
 import 'package:flutter_maps/stores/map_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 
 import 'map_top_bar.dart';
 
-class MapView extends StatelessWidget {
+class MapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<MapStore>(
@@ -18,10 +19,14 @@ class MapView extends StatelessWidget {
           final mapStore = Provider.of<MapStore>(context);
           final appStore = Provider.of<ApplicationStore>(context);
           return Scaffold(
-              drawer: AppMainDrawer(),
+              drawer: AppMainDrawer(
+                currentRouteName: Routes.home,
+              ),
               floatingActionButton: FloatingActionButton(
                 child: Icon(Icons.tune),
-                onPressed: () { appStore.reportPaused++;},
+                onPressed: () {
+                  appStore.reportPaused++;
+                },
               ),
               body: Stack(
                 children: [
