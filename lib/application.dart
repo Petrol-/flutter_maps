@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/core/services/navigation_service.dart';
+import 'package:flutter_maps/core/stores/application_store.dart';
+import 'package:flutter_maps/features/application_view.dart';
 import 'package:provider/provider.dart';
 
-import 'stores/application_store.dart';
-import 'views/application_view.dart';
 
 class Application extends StatelessWidget {
   @override

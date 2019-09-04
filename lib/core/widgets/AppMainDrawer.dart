@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_maps/core/services/navigation_service.dart';
+import 'package:flutter_maps/core/stores/application_store.dart';
 import 'package:flutter_maps/routes.dart';
-import 'package:flutter_maps/stores/application_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ class AppMainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appStore = Provider.of<ApplicationStore>(context);
+    final navigationService = Provider.of<NavigationService>(context);
     return Drawer(
       child: SafeArea(
         child: Observer(
@@ -26,7 +28,7 @@ class AppMainDrawer extends StatelessWidget {
                 selectedRoute: currentRouteName,
                 icon: Icons.map,
                 title: "CARTE GEOLOCALISEE",
-                onTap: () {},
+                onTap: () => navigationService.navigateTo(Routes.home),
               ),
               DrawerItem(
                 icon: Icons.autorenew,
@@ -36,7 +38,7 @@ class AppMainDrawer extends StatelessWidget {
               DrawerItem(
                 icon: Icons.add_circle_outline,
                 title: "NOUVEAU CONTRAT",
-                onTap: () {},
+                onTap: () => navigationService.navigateTo(Routes.newContract),
               ),
               DrawerSection(
                 title: "Tableau de bord",

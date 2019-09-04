@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_maps/core/stores/application_store.dart';
 import 'package:flutter_maps/core/widgets/AppMainDrawer.dart';
+import 'package:flutter_maps/features/map/stores/map_store.dart';
+import 'package:flutter_maps/features/map/widgets/map_top_bar.dart';
 import 'package:flutter_maps/routes.dart';
-import 'package:flutter_maps/stores/application_store.dart';
-import 'package:flutter_maps/stores/map_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'map_top_bar.dart';
 
 class MapPage extends StatelessWidget {
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_maps/core/services/navigation_service.dart';
+import 'package:flutter_maps/features/map/pages/map_page.dart';
 import 'package:flutter_maps/router.dart';
-import 'package:flutter_maps/views/map/map_page.dart';
 import 'package:provider/provider.dart';
 
 class ApplicationView extends StatelessWidget {
