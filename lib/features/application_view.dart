@@ -23,6 +23,7 @@ class ApplicationView extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
+        canvasColor: Colors.transparent
       ),
       navigatorKey: navigationService.navigatorKey,
       initialRoute: Routes.home,
